@@ -1,15 +1,18 @@
 import os
+import sys
 from shutil import copyfile
 
-srcMainPath = "/mnt/c/Users/dominik/Desktop/tel/Camera"
-destMainPath = "/mnt/c/Users/dominik/Desktop/tel/Events"
+srcDir = sys.argv[1]
+destDir = sys.argv[2]
 listDirectoryNames = []
 
-for fileName in os.listdir(srcMainPath):
-	newDirectoryName = fileName[0:4] + "_" + fileName[4:6] + "_" + fileName[6:8] + "_"
+for fileName in os.listdir(srcDir):
+	newDirectoryName = fileName[0:4] + "_"
+	newDirectoryName += fileName[4:6] + "_"
+	newDirectoryName += fileName[6:8] + "_"
 	if not newDirectoryName in listDirectoryNames:
 		listDirectoryNames.append(newDirectoryName)
-		os.mkdir(destMainPath + "/" + newDirectoryName)
-	src = srcMainPath + "/" + fileName
-	dest = destMainPath + "/" + newDirectoryName + "/" + fileName
+		os.mkdir(destDir + "/" + newDirectoryName)
+	src = srcDir + "/" + fileName
+	dest = destDir + "/" + newDirectoryName + "/" + fileName
 	copyfile(src, dest)
