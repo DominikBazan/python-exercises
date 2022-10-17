@@ -1,3 +1,12 @@
+"""
+
+Execution example:
+$ py separateEvents.py "C:/unsorted_photos" "C:/sorted_photos"
+
+WARNING: Remember to check if the command output takes up the same disk space as the original files.
+
+"""
+
 import os
 import sys
 from shutil import copyfile
